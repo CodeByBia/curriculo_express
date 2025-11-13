@@ -11,6 +11,11 @@ export default (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     }
+    ,
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    }
   });
 
   return Pessoa;
