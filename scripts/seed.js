@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import "dotenv/config";
-import { seedDatabase } from "../api/controllers/seedController.js";
+import { seedDatabase } from "../src/controllers/seedController.js";
 
 async function run() {
   try {

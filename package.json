@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node api/server.js",
-  "dev": "nodemon --watch api --exec node api/server.js",
+  "dev": "nodemon --watch src --exec node src/server.js",
     "vercel-build": "echo \"no build step\"",
     "seed": "node scripts/seed.js"
   },
