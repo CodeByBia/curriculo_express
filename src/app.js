@@ -11,6 +11,9 @@ app.get("/", (req, res) => {
   res.send("API Currículo Express — versão serverless");
 });
 
+// Evita 404 no navegador para /favicon.ico
+app.get("/favicon.ico", (_req, res) => res.status(204).end());
+
 // Montar rotas da API em /api
 app.use("/api", routes);
 
