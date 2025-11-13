@@ -3,9 +3,9 @@ import models from "../models/index.js";
 
 const { Pessoa, Formacao, Experiencia } = models;
 
-// função reutilizável que cria as tabelas (se necessário) e insere dados de exemplo
+// Seed: cria tabelas (se necessário) e insere dados de exemplo
 export async function seedDatabase() {
-  // autentica e synchroniza (cria tabelas se não existirem)
+  // autentica e sincroniza (cria/ajusta tabelas)
   await sequelize.authenticate();
   // em dev/test podemos alterar a tabela para acompanhar o modelo (simples e prático)
   await sequelize.sync({ alter: true });

@@ -1,7 +1,7 @@
 import models from "../models/index.js";
 const { Pessoa } = models;
 
-// Pessoas: endpoints pra criar e listar pessoas.
+// Controller de Pessoas: endpoints para criar e listar
 export const createPessoa = async (req, res) => {
   try {
     const pessoa = await Pessoa.create(req.body);

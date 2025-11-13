@@ -1,6 +1,3 @@
-# Ignore everything in src to avoid accidental function detection
-src/
-
 # Ignore scripts and tests from upload
 scripts/
 tests/

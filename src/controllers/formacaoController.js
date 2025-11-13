@@ -1,7 +1,7 @@
 import models from "../models/index.js";
 const { Formacao } = models;
 
-// Formações: criação e listagem. Comentários rápidos para facilitar leitura.
+// Controller de Formacao: endpoints para criar e listar
 export const createFormacao = async (req, res) => {
   try {
     const formacao = await Formacao.create(req.body);

@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import routes from "./routes/index.js";
 
-// Este arquivo apenas monta o Express app (sem chamar listen).
-// Isso permite usar o mesmo app tanto em serverless (Vercel) quanto localmente.
+// Aplicação Express (sem chamar server.listen aqui)
+// Usada pelo handler serverless e pelo servidor local
 const app = express();
 
 app.use(cors());
@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   res.send("API Currículo Express — versão serverless");
 });
 
-// Mantemos as rotas como estavam (prefixadas com /api no projeto original).
+// Montar rotas da API em /api
 app.use("/api", routes);
 
 export default app;

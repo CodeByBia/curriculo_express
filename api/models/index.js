@@ -1,6 +1,4 @@
-// Aqui juntamos os modelos com a instância do Sequelize e declarámos as relações.
-// Comentários rápidos pra quem abrir o arquivo: os modelos são funções que recebem a
-// instância do sequelize e retornam o model (padrão comum com Sequelize sem classes).
+// Inicializa os modelos e define as associações.
 import pessoaModel from "./pessoaModel.js";
 import formacaoModel from "./formacaoModel.js";
 import experienciaModel from "./experienciaModel.js";
