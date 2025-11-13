@@ -1,0 +1,15 @@
+# Ignore everything in src to avoid accidental function detection
+src/
+
+# Ignore scripts and tests from upload
+scripts/
+tests/
+
+# Node modules and env
+node_modules/
+.env
+
+# Misc
+.DS_Store
+.idea/
+.vscode/
