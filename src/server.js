@@ -11,7 +11,8 @@ async function start() {
     await sequelize.sync();
     console.log("Banco Ok — modelos sincronizados.");
 
-    if (process.env.SEED === "true" || process.env.NODE_ENV !== "production") {
+    // Execute seed somente quando explicitamente solicitado via SEED=true
+    if (process.env.SEED === "true") {
       try {
         await seedDatabase();
       } catch (e) {
@@ -19,7 +20,26 @@ async function start() {
       }
     }
 
-    app.listen(port, () => console.log(`Servidor local rodando na porta ${port}`));
+    const server = app.listen(port, () => console.log(`Servidor local rodando na porta ${port}`));
+
+    // Fechamento gracioso: fecha servidor e conexão com o DB em sinais de término
+    const shutdown = async () => {
+      try {
+        console.log('Fechando servidor...');
+        server.close(() => console.log('HTTP server fechado'));
+        await sequelize.close();
+        console.log('Conexão com DB fechada');
+        process.exit(0);
+      } catch (err) {
+        console.error('Erro durante shutdown:', err.message);
+        process.exit(1);
+      }
+    };
+
+    process.on('SIGINT', shutdown);
+    process.on('SIGTERM', shutdown);
+    // Nodemon usa SIGUSR2 para reiniciar - replicamos comportamento comum
+    process.once('SIGUSR2', () => { shutdown().then(() => process.kill(process.pid, 'SIGUSR2')); });
   } catch (e) {
     console.error("Erro ao iniciar localmente:", e.message);
     process.exit(1);
